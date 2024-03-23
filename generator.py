@@ -1,4 +1,5 @@
 import math
+import particledata
 
 def expSample(l):
     """
