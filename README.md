@@ -1,1 +1,3 @@
-# particle-physics-game
+# Particle physics game!
+
+It teaches physics I guess.
