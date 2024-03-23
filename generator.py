@@ -53,7 +53,7 @@ def lineBounds(x, y, vx, vy, env):
         yint = (env.ymin-x)/vy
     else:
         yint = (env.ymax-y)/vy
-    t = math.min(xint, yint)
+    t = min(xint, yint)
     return x + t*vx, y+t*vy
 
 class LinePath:
@@ -69,7 +69,7 @@ class LinePath:
 
 class CirclePath:
     def __init__(self, x, y, r, t1, t2):
-        self.category = "circle"
+        self.mode = "circle"
         self.x=x
         self.y=y
         self.r=r
@@ -97,6 +97,7 @@ def propagate(particle, x, y, px, py, env):
         p = math.sqrt(px**2+py**2)
         dx, dy = px/p, py/p # Unit vector direction of travel
         rg = p / (particle.charge * env.b) # Gyroradius calculation
-        # TODO: Check direction of circle!
-        cx, cy = -dy*rg, dx*rg # Gyrocenter calculation
+        # Positive indicates clockwise, negative indicates counterlockwise
+        # TODO: Check direction of circle with respect to magnetic field
+        cx, cy = -dy*rg+x, dx*rg+y # Gyrocenter calculation
         return [Trail(particle, CirclePath(cx, cy, rg, 0, 2*math.pi))]
