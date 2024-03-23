@@ -1,5 +1,6 @@
 import json
 import math
+from pyscript import document
 
 SVG_HEIGHT = 400
 SVG_WIDTH = 600
@@ -55,5 +56,4 @@ if __name__ == '__main__':
 
     out += "</svg>"
 
-    with open("out.svg", "w") as file:
-        file.write(out)
+    document.querySelector('#svghere').innerText = out
