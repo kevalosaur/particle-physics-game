@@ -1,27 +1,27 @@
 {
     "particles": [
         {
-            "label": "particle1",
+            "label": "electron",
             "path": {
                 "type": "line",
                 "params": {
-                    "x1": 0,
-                    "y1": 0,
-                    "x2": 5,
-                    "y2": 5
+                    "x1": -50,
+                    "y1": 60,
+                    "x2": -20,
+                    "y2": 20
                 }
             }
         },
         {
-            "label": "particle2",
+            "label": "electron",
             "path": {
                 "type": "circle",
                 "params": {
-                    "x": 2,
-                    "y": 1,
-                    "r": 3,
-                    "t1": 0,
-                    "t2": 2.5
+                    "x": -50,
+                    "y": 60,
+                    "r": 50,
+                    "t1": 1.57,
+                    "t2": 3.14
                 }
             }
         }
