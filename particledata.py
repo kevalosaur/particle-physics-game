@@ -29,4 +29,5 @@ class DecayMode:
 
 
 ELECTRON = ParticleType("e-", 1, -1, False, None, [])
+POSITRON = ParticleType("e+", 1, +1, False, None, [])
 PHOTON = ParticleType("γ", 0, 0, False, None, [])

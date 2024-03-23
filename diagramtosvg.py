@@ -23,7 +23,7 @@ def convert_diagram(diagram):
     for p in diagram:
         path = p.path
         d = ""
-        if path.type == 'line':
+        if path.mode == 'line':
             x1, y1, x2, y2 = path.x1, path.y1, path.x2, path.y2
             x1w, y1w = cartesian_to_web(x1, y1, SVG_HEIGHT, SVG_WIDTH)
             x2w, y2w = cartesian_to_web(x2, y2, SVG_HEIGHT, SVG_WIDTH)
@@ -31,7 +31,7 @@ def convert_diagram(diagram):
                 "M", str(x1w), str(y1w),
                 "L", str(x2w), str(y2w),
             ])
-        elif path.type == 'circle':
+        elif path.mode == 'circle':
             x, y, r, t1, t2 = path.x, path.y, path.r, path.t1, path.t2
             isReflexArc = '1' if t2-t1 >= math.pi else '0'
             x1, y1 = polar_to_web(x, y, r, t1, SVG_HEIGHT, SVG_WIDTH)
