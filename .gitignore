@@ -1,2 +1,5 @@
 # Ignore output
 out.svg
+
+# Ignore pycache
+__pycache__

@@ -23,11 +23,15 @@ def vel(p, m):
     return math.sqrt(1/((m) + 1))
 
 class Env:
-    def __init__(self, xmin, xmax, ymin, ymax) -> None:
+    def __init__(self, xmin, xmax, ymin, ymax, b) -> None:
         self.xmin = xmin
         self.xmax = xmax
         self.ymin = ymin
         self.ymax = ymax
+        self.b = b
+    
+    def __repr__(self):
+        return f"Env({self.xmin}, {self.xmax}, {self.ymin}, {self.ymax}, {self.b})"
 
 def lineBounds(x, y, vx, vy, env):
     """
@@ -54,25 +58,45 @@ def lineBounds(x, y, vx, vy, env):
 
 class LinePath:
     def __init__(self, x1, y1, x2, y2):
-        self.type = "line"
-        self.params = dict(
-            x1=x1,
-            y1=y1,
-            x2=x2,
-            y2=y2
-        )
+        self.mode = "line"
+        self.x1=x1
+        self.y1=y1
+        self.x2=x2
+        self.y2=y2
+    
+    def __repr__(self):
+        return f"LinePath({self.x1}, {self.y1}, {self.x2}, {self.y2})"
+
+class CirclePath:
+    def __init__(self, x, y, r, t1, t2):
+        self.category = "circle"
+        self.x=x
+        self.y=y
+        self.r=r
+        self.t1=t1
+        self.t2=t2
+    
+    def __repr__(self):
+        return f"CirclePath({self.x}, {self.y}, {self.r}, {self.t1}, {self.t2})"
 
 class Trail:
     def __init__(self, particle, path):
-        this.label = particle.name
-        this.path = path
+        self.label = particle.name
+        self.path = path
+    
+    def __repr__(self):
+        return f"Trail({self.label}, {self.path})"
 
 def propagate(particle, x, y, px, py, env):
+    # TODO: Consider interactions! This code only models motion for now
     if particle.mass == 0:
-        # TODO: Consider interactions!
         # For now, the particle moves to the edge of the bounds
         x2, y2 = lineBounds(x, y, px, py, env)
         return [Trail(particle, LinePath(x, y, x2, y2))]
     else:
-        # TODO: Continue this
-        pass
+        p = math.sqrt(px**2+py**2)
+        dx, dy = px/p, py/p # Unit vector direction of travel
+        rg = p / (particle.charge * env.b) # Gyroradius calculation
+        # TODO: Check direction of circle!
+        cx, cy = -dy*rg, dx*rg # Gyrocenter calculation
+        return [Trail(particle, CirclePath(cx, cy, rg, 0, 2*math.pi))]
