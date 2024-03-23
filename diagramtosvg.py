@@ -15,9 +15,40 @@ def polar_to_web(cx, cy, radius, angle_radians, h, w):
     xc, yc = polar_to_cartesian(cx, cy, radius, angle_radians)
     return cartesian_to_web(xc, yc, h, w)
 
+test_json = """{
+    "particles": [
+        {
+            "label": "electron",
+            "path": {
+                "type": "line",
+                "params": {
+                    "x1": -50,
+                    "y1": 60,
+                    "x2": -20,
+                    "y2": 20
+                }
+            }
+        },
+        {
+            "label": "electron",
+            "path": {
+                "type": "circle",
+                "params": {
+                    "x": -50,
+                    "y": 60,
+                    "r": 50,
+                    "t1": 1.57,
+                    "t2": 3.14
+                }
+            }
+        }
+    ]
+}"""
+
 if __name__ == '__main__':
-    with open('diagramtemplate.json') as diagram_json:
-        diagram_string = diagram_json.read()
+    # with open('diagramtemplate.json') as diagram_json:
+    #     diagram_string = diagram_json.read()
+    diagram_string = test_json
     diagram = json.loads(diagram_string)
 
     particle_bucket = dict()
@@ -56,4 +87,4 @@ if __name__ == '__main__':
 
     out += "</svg>"
 
-    document.querySelector('#svghere').innerText = out
+    document.querySelector('#svghere').innerHTML = out
