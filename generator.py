@@ -55,17 +55,24 @@ def lineBounds(x, y, vx, vy, env):
 class LinePath:
     def __init__(self, x1, y1, x2, y2):
         self.type = "line"
-        self.params = dict(
-            x1=x1,
-            y1=y1,
-            x2=x2,
-            y2=y2
-        )
+        self.x1=x1
+        self.y1=y1
+        self.x2=x2
+        self.y2=y2
+
+class CirclePath:
+    def __init__(self, x, y, r, t1, t2):
+        self.type = "circle"
+        self.x=x
+        self.y=y
+        self.r=r
+        self.t1=t1
+        self.t2=t2
 
 class Trail:
     def __init__(self, particle, path):
-        this.label = particle.name
-        this.path = path
+        self.label = particle.name
+        self.path = path
 
 def propagate(particle, x, y, px, py, env):
     if particle.mass == 0:
