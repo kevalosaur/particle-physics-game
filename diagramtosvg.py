@@ -17,7 +17,7 @@ def polar_to_web(cx, cy, radius, angle_radians, h, w):
 def convert_diagram(diagram):
     particle_bucket = dict()
 
-    out = f"<svg height=\"{SVG_HEIGHT}\" width=\"{SVG_WIDTH}\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+    out = f"<svg height=\"{SVG_HEIGHT}\" width=\"{SVG_WIDTH}\" id=\"canvas\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
 
     for p in diagram:
         path = p.path

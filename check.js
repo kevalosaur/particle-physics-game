@@ -1,4 +1,5 @@
 let activeButton;
+let canvas;
 
 document.addEventListener('mousedown', function(event) {
     let activeElement = event.target;
@@ -11,6 +12,16 @@ document.addEventListener('mousedown', function(event) {
         if(activeButton.id == particleClicked){
             // correct answer! yay!
             activeElement.classList.add('correct');
+
+            // check if all correct
+            canvas = document.getElementById('canvas');
+            let allCorrect = true
+            canvas.childNodes.forEach((node) => {
+                allCorrect &&= node.classList.contains('correct');
+            });
+            if(allCorrect) {
+                alert('all correct');
+            }
         }
         else {
             // wrong answer! boo!
@@ -18,7 +29,6 @@ document.addEventListener('mousedown', function(event) {
             setTimeout(() => {
                 activeButton.classList.remove('wrong');
             }, 820);
-            // alert("incorrect");
         }
     }
 });
