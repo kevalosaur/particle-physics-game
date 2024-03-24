@@ -2,7 +2,7 @@ var activeButton;
 
 function check(lineLabel){
     console.log(lineLabel+", "+activeButton)
-    if(lineLabel+"Button" == activeButton) {
+    if(lineLabel == activeButton) {
         alert("Correct")
     }
     else {
