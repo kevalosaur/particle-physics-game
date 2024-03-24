@@ -36,6 +36,10 @@ path.correct {
     opacity: 100%;
 }
 
+.y.correct, .ve.correct, .ve_bar.correct, .vmu.correct, .vmu_bar.correct {
+    stroke-width: 1px;
+}
+
 path:active {
     stroke-width: 12px;
     stroke: yellowgreen;
