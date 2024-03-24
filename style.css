@@ -21,13 +21,13 @@ path:hover {
 .mu- {
     stroke-width: 4px;
 }
-.ve, .ve_bar, .vmu, .vmu_bar {
+.y, .ve, .ve_bar, .vmu, .vmu_bar {
     stroke-width: 4px;
     opacity: 0%;
     stroke: #aaa;
     transition: opacity 0.4s;
 }
-.ve:hover, .ve_bar:hover, .vmu:hover, .vmu_bar:hover {
+.y:hover, .ve:hover, .ve_bar:hover, .vmu:hover, .vmu_bar:hover {
     opacity: 100%;
 }
 
@@ -213,4 +213,8 @@ button.wrong {
 
 sub {
     pointer-events: none;
+}
+
+a {
+    font-family: Verdana;
 }
