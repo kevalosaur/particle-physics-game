@@ -1,3 +1,5 @@
+import yaml
+
 class ParticleType:
     """
     Represents a type of particle.
@@ -33,14 +35,20 @@ class DecayMode:
         self.weight = weight
 
 
-ELECTRON = ParticleType("e-", "e-", 0.511, -1, False, None, [],
-"The electron, e-, is a component of ordinary matter, found orbiting atomic nuclei. A high-energy electron is called a beta ray. Electrons leave thin trails in the detector.")
-POSITRON = ParticleType("ep", "e+", 0.511, +1, False, None, [],
-"The positron, e+, is the antimatter counterpart of the electron, with equal mass but inverted charge. A positron will leave an electron-like trail, but curving in the opposite direction.")
-PHOTON = ParticleType("y", "γ", 0, 0, False, None, [],
-"The photon, γ, is the carrier of the electromagnetic force and a particle of light. Depending on energy and source they can be referred to as gamma rays or X-rays. Photons are neutral and thus leave no trail in the bubble chamber.")
-MUON = ParticleType("mu", "μ-", 105.658, -1, True, 2.197e-6, [DecayMode(["e-", "ve bar", "vmu"])],
-"The muon, μ-, is a so-called \"heavy electron\", having the same charge as the electron but being over 200 times more massive. They are unstable and decay into electrons. They leave thick trails in the detector.")
+with open("particles.yaml", "r") as file:
+    PARTICLES = yaml.safe_load(file)
+for k in PARTICLES:
+    v = PARTICLES[k]
+    decays = v['decays']
+    if decays:
+        meanlife = v['meanlife']
+        modes = v['decaymodes']
+        for i in range(len(modes)):
+            modes[i] = DecayMode(modes[i]['products'], modes[i]['weight'])
+    else:
+        meanlife = None
+        modes = None
+    p = ParticleType(k, v['symbol'], v['mass'], v['charge'], decays, meanlife, modes, v['description'])
+    PARTICLES[k] = p
 
-PARTICLES = [ELECTRON, POSITRON, PHOTON, MUON]
-
+print(PARTICLES)

@@ -4,9 +4,41 @@ e-:
   mass: 0.511
   charge: -1
   decays: false
+  description: >
+    The electron, e-, is a component of ordinary matter, found orbiting atomic nuclei.
+    A high-energy electron is called a beta ray. Electrons leave thin trails in the detector.
 e+:
   name: positron
   symbol: e-
   mass: 0.511
   charge: 1
   decays: false
+  description: >
+    The positron, e+, is the antimatter counterpart of the electron, with equal mass but inverted charge.
+    A positron will leave an electron-like trail, but curving in the opposite direction.
+y:
+  name: photon
+  symbol: γ
+  mass: 0
+  charge: 0
+  decays: false
+  description: >
+    The photon, γ, is the carrier of the electromagnetic force and a particle of light.
+    Depending on energy and source they can be referred to as gamma rays or X-rays.
+    Photons are neutral and thus leave no trail in the bubble chamber.
+mu-:
+  name: muon
+  symbol: μ-
+  mass: 105.658
+  charge: -1
+  decays: true
+  meanlife: 2.197e-6
+  decaymodes:
+    - weight: 1
+      products:
+        - e-
+        - vmu bar
+        - ve
+  description: >
+    The muon, μ-, is a so-called "heavy electron", having the same charge as the electron but being over 200 times more massive.
+    They are unstable and decay into electrons and neutrinos. They leave thick trails in the detector.
