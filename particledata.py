@@ -3,7 +3,7 @@ class ParticleType:
     Represents a type of particle.
     """
 
-    def __init__(self, name, symbol, mass, charge, decays, halflife, decayPattern):
+    def __init__(self, name, symbol, mass, charge, decays, meanlife, decayPattern, description):
         """
         Constructs an object representing a type of particle.
         
@@ -11,7 +11,7 @@ class ParticleType:
         :param mass: Rest mass of the particle.
         :param charge: Charge of the particle.
         :param decays: Boolean, whether the particle decays.
-        :param halflife: Half-life of the particle.
+        :param meanlife: Mean lifetime of the particle, AKA the time it takes for the population to 1/e
         :param decayPattern: List of possible decay modes, with weights.
         """
         self.name = name
@@ -19,8 +19,12 @@ class ParticleType:
         self.mass = mass
         self.charge = charge
         self.decays = decays
-        self.halflife = halflife
+        self.meanlife = halflife
         self.decayPattern = decayPattern
+        self.description = description
+    
+    def desc_text(self):
+        return self.description + f"\n\nCharge:{charge} e\nMass:{self.mass}"
 
 
 class DecayMode:
@@ -29,8 +33,13 @@ class DecayMode:
         self.weight = weight
 
 
-ELECTRON = ParticleType("e-", "e-", 1, -1, False, None, [])
-POSITRON = ParticleType("e+", "e+", 1, +1, False, None, [])
-PHOTON = ParticleType("y", "γ", 0, 0, False, None, [])
+ELECTRON = ParticleType("e-", "e-", 0.511, -1, False, None, [],
+"The electron, e-, is a component of ordinary matter, found orbiting atomic nuclei. A high-energy electron is called a beta ray. Electrons leave thin trails in the detector.")
+POSITRON = ParticleType("e+", "e+", 0.511, +1, False, None, [],
+"The positron, e+, is the antimatter counterpart of the electron, with equal mass but inverted charge. A positron will leave an electron-like trail, but curving in the opposite direction.")
+PHOTON = ParticleType("y", "γ", 0, 0, False, None, [],
+"The photon, γ, is the carrier of the electromagnetic force and a particle of light. Depending on energy and source they can be referred to as gamma rays or X-rays. Photons are neutral and thus leave no trail in the bubble chamber.")
+MUON = ParticleType("mu", "mu", 105.658, -1, True, 10, [],
+"The muon, mu, is a so-called \"heavy electron\", having the same charge as the electron but being over 200 times more massive. They are unstable and decay into electrons. They leave thick trails in the detector.")
 
 PARTICLES = [ELECTRON, POSITRON, PHOTON]
