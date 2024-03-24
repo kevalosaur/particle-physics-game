@@ -1,8 +1,9 @@
 {
-    "packages": ["numpy"],
+    "packages": ["numpy", "pyyaml"],
     "files": {
         "./particledata.py": "./particledata.py",
         "./generator.py": "./generator.py",
-        "./diagramtosvg.py": "./diagramtosvg.py"
+        "./diagramtosvg.py": "./diagramtosvg.py",
+        "./particles.yaml": "./particles.yaml"
     }
 }
