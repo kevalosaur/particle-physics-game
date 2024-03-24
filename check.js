@@ -1,17 +1,34 @@
-var activeButton;
-
-function check(lineLabel){
-    console.log(lineLabel+", "+activeButton)
-    if(lineLabel+"Button" == activeButton) {
-        alert("Correct")
-    }
-    else {
-        alert("Incorrect")
-    }
-}
+let activeButton;
+let canvas;
 
 document.addEventListener('mousedown', function(event) {
-    if(event.target.nodeName == 'BUTTON') {
-        activeButton = event.target.id;
+    let activeElement = event.target;
+    console.log(activeElement.nodeName);
+    if(activeElement.nodeName == 'BUTTON') {
+        activeButton = activeElement;
+    }
+    else if(activeElement.nodeName == 'path') {
+        let particleClicked = activeElement.className.baseVal
+        if(activeButton.id == particleClicked){
+            // correct answer! yay!
+            activeElement.classList.add('correct');
+
+            // check if all correct
+            canvas = document.getElementById('canvas');
+            let allCorrect = true
+            canvas.childNodes.forEach((node) => {
+                allCorrect &&= node.classList.contains('correct');
+            });
+            if(allCorrect) {
+                alert('all correct');
+            }
+        }
+        else {
+            // wrong answer! boo!
+            activeButton.classList.add('wrong');
+            setTimeout(() => {
+                activeButton.classList.remove('wrong');
+            }, 820);
+        }
     }
 });

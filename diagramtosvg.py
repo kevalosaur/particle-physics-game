@@ -1,4 +1,3 @@
-import json
 import math
 import numpy as np
 from pyscript import document
@@ -22,7 +21,7 @@ def curve_func(t, R, a):
 def convert_diagram(diagram):
     particle_bucket = dict()
 
-    out = f"<svg height=\"{SVG_HEIGHT}\" width=\"{SVG_WIDTH}\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+    out = f"<svg height=\"{SVG_HEIGHT}\" width=\"{SVG_WIDTH}\" id=\"canvas\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
 
     for p in diagram:
         path = p.path
@@ -61,7 +60,7 @@ def convert_diagram(diagram):
             particle_bucket[id] = 0
         id += str(particle_bucket[id])
 
-        out += f"<path class=\"{p.label}\" id=\"{id}\" d=\"{d}\" onclick=\"check(\'{p.label}\')\"/>"
+        out += f"<path class=\"{p.label}\" id=\"{id}\" d=\"{d}\" />"
 
     out += "</svg>"
     return out

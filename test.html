@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <head>
+    <title>Particle Physics Game</title>
     <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css" />
     <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
     <script src="./check.js"></script>
@@ -7,11 +8,10 @@
 </head>
 <body>
     <div id="svghere">
-        
     </div>
 
-    <button id="electronButton">Electron</button>
-    <button id="protonButton">Proton</button>
-
+    <div id="buttons">
+    </div>
     <script type="py" src="./main.py" config="./pyscript.json"></script>
+    <script type="py" src="./loadbuttons.py" config="./pyscript.json"></script>
 </body>
