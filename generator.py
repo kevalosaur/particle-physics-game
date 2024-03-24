@@ -1,5 +1,9 @@
 import math
+import random
 import particledata
+from pyscript import window
+
+c = 299792458
 
 def expSample(l):
     """
@@ -10,7 +14,7 @@ def expSample(l):
     :param l: The lambda parameter of the exponential
     :return: An sample drawn from the exponential distribution
     """
-    return -1/l * math.log(1-math.random())
+    return -1/l * math.log(1-random.random())
 
 def vel(p, m):
     """
@@ -119,12 +123,16 @@ class Trail:
 
 def propagate(particle, x, y, px, py, env):
     # TODO: Consider interactions! This code only models motion for now
+    p = math.sqrt(px**2+py**2)
+    if particle.decays:
+        decay_time = expSample(1/particle.meanlife)
+        decay_dist = decay_time * p / particle.mass * c
+        window.console.log(decay_time, decay_dist)
     if particle.mass == 0:
         # For now, the particle moves to the edge of the bounds
         x2, y2 = lineBounds(x, y, px, py, env)
         return [Trail(particle, LinePath(x, y, x2, y2))]
     else:
-        p = math.sqrt(px**2+py**2)
         dx, dy = px/p, py/p # Unit vector direction of travel
         rg = p / (particle.charge * env.b) # Gyroradius calculation
         # Sign is correct if positive B means out of page

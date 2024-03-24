@@ -3,7 +3,7 @@ class ParticleType:
     Represents a type of particle.
     """
 
-    def __init__(self, name, symbol, mass, charge, decays, meanlife, decayPattern, description):
+    def __init__(self, ident, symbol, mass, charge, decays, meanlife, decayPattern, description):
         """
         Constructs an object representing a type of particle.
         
@@ -14,7 +14,7 @@ class ParticleType:
         :param meanlife: Mean lifetime of the particle, AKA the time it takes for the population to 1/e
         :param decayPattern: List of possible decay modes, with weights.
         """
-        self.name = name
+        self.ident = ident
         self.symbol = symbol
         self.mass = mass
         self.charge = charge
@@ -24,7 +24,7 @@ class ParticleType:
         self.description = description
     
     def desc_text(self):
-        return self.description + f"\n\nCharge:{self.charge} e\nMass:{self.mass}"
+        return self.description + f"\n\nCharge:{self.charge} e\nMass:{self.mass} MeV"
 
 
 class DecayMode:
@@ -39,7 +39,8 @@ POSITRON = ParticleType("e+", "e+", 0.511, +1, False, None, [],
 "The positron, e+, is the antimatter counterpart of the electron, with equal mass but inverted charge. A positron will leave an electron-like trail, but curving in the opposite direction.")
 PHOTON = ParticleType("y", "γ", 0, 0, False, None, [],
 "The photon, γ, is the carrier of the electromagnetic force and a particle of light. Depending on energy and source they can be referred to as gamma rays or X-rays. Photons are neutral and thus leave no trail in the bubble chamber.")
-MUON = ParticleType("mu", "mu", 105.658, -1, True, 2.197e-6, [DecayMode(["e-", "ve bar", "vmu"])],
-"The muon, mu, is a so-called \"heavy electron\", having the same charge as the electron but being over 200 times more massive. They are unstable and decay into electrons. They leave thick trails in the detector.")
+MUON = ParticleType("mu", "μ-", 105.658, -1, True, 2.197e-6, [DecayMode(["e-", "ve bar", "vmu"])],
+"The muon, μ-, is a so-called \"heavy electron\", having the same charge as the electron but being over 200 times more massive. They are unstable and decay into electrons. They leave thick trails in the detector.")
 
-PARTICLES = [ELECTRON, POSITRON, PHOTON]
+PARTICLES = [ELECTRON, POSITRON, PHOTON, MUON]
+

@@ -1,0 +1,12 @@
+e-:
+  name: electron
+  symbol: e-
+  mass: 0.511
+  charge: -1
+  decays: false
+e+:
+  name: positron
+  symbol: e-
+  mass: 0.511
+  charge: 1
+  decays: false
