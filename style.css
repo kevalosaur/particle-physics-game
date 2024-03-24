@@ -176,12 +176,13 @@ button.wrong {
     stroke-width: 4px;
 }
 .ve, .ve_bar, .vmu, .vmu_bar {
-    stroke-width: 2px;
-    stroke: whitesmoke;
-    transition: stroke 0.4s;
+    stroke-width: 4px;
+    opacity: 0%;
+    stroke: #aaa;
+    transition: opacity 0.4s;
 }
 .ve:hover, .ve_bar:hover, .vmu:hover, .vmu_bar:hover {
-    stroke: #aaa
+    opacity: 100%;
 }
 
 .loader {
