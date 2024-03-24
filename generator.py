@@ -155,7 +155,7 @@ def propagate(particle, x, y, px, py, env, force_decay = None):
         td = (math.asin(dy) if dx>0 else math.pi - math.asin(dy))
         t0 = td - math.pi/2 * curve_sign
         other = []
-        a = 0.1
+        a = 0.05 if particle.mass < 1 else 0.01
         if particle.decays:
             angle_moved = decay_dist/rg
             px2 = px*math.cos(angle_moved)-py*math.sin(angle_moved)*curve_sign
