@@ -186,6 +186,10 @@ button.wrong {
     font-size: 12px;
 }
 
+#mainrow {
+    display: flex;
+}
+
 .loader {
     margin: 140px 240px;
     border: 16px solid #aaa;
