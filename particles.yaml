@@ -37,8 +37,8 @@ mu-:
     - weight: 1
       products:
         - e-
-        - vmu_bar
-        - ve
+        - vmu
+        - ve_bar
   description: >
     The (negative) muon, μ-, is a so-called "heavy electron", having the same charge as the electron but being over 200 times more massive.
     They are unstable and decay into electrons and neutrinos. They leave thick trails in the detector.
@@ -53,8 +53,8 @@ mu+:
     - weight: 1
       products:
         - ep
-        - vmu
-        - ve-
+        - vmu_bar
+        - ve
   description: >
     The antimuon or positive muon is the antimatter counterpart of the muon, having opposite charge to the electron and also being more massive.
     Like the negative muon leave thick trails in the detector.

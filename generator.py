@@ -123,11 +123,12 @@ class Trail:
         return f"Trail({self.label}, {self.path})"
 
 def decay_momentum(M, m1, m2):
-    return np.sqrt((M**2 - (m1+m2)**2)*(M**2-(m1-m2)**2)) / (2 * M)
+    return math.sqrt((M**2 - (m1+m2)**2)*(M**2-(m1-m2)**2)) / (2 * M)
 
-def random_angle():
+def random_angles(steps = 1):
     theta = random.random() * 2 * math.pi
-    return math.cos(theta), math.sin(theta)
+    step_size = 2*math.pi / steps
+    return [(math.cos(theta+step_size*i), math.sin(theta+step_size*i)) for i in range(steps)]
 
 def propagate(particle, x, y, px, py, env, force_decay = None):
     # TODO: Consider interactions! This code only models motion for now
@@ -157,11 +158,15 @@ def propagate(particle, x, y, px, py, env, force_decay = None):
         a = 0.1
         if particle.decays:
             angle_moved = decay_dist/rg
+            px2 = px*math.cos(angle_moved)-py*math.sin(angle_moved)*curve_sign
+            py2 = px*math.sin(angle_moved)*curve_sign+py*math.cos(angle_moved)
+            daughters = [PARTICLES[d] for d in particle.decayPattern[0].products] # TODO: Random choice here? Not really relevant
+            energy_out = particle.mass - sum([d.mass for d in daughters])
+            momentum = decay_momentum(particle.mass, daughters[0].mass, daughters[1].mass)
             xs, ys = curve_func(angle_moved, rg, a)*math.cos(curve_sign*angle_moved+t0)+cx, curve_func(angle_moved, rg, a)*math.sin(curve_sign*angle_moved+t0)+cy
-            for daughter in particle.decayPattern[0].products:
-                daughter = PARTICLES[daughter]
-                dx, dy = random_angle()
-                other += propagate(daughter, xs, ys, px + dx*10, py+dy*10, env)
+            angles = random_angles(steps=len(daughters))
+            for i, daughter in enumerate(daughters):
+                other += propagate(daughter, xs, ys, px2 + momentum*angles[i][0], py2+momentum*angles[i][1], env)
         else:
             angle_moved = 30*math.pi # TODO: This should be calculated somehow
         return other + [Trail(particle, SpiralPath(cx, cy, rg, curve_sign, t0, angle_moved, a))]
