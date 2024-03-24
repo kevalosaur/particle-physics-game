@@ -8,7 +8,7 @@ document.addEventListener('mousedown', function(event) {
         activeButton = activeElement;
     }
     else if(activeElement.nodeName == 'path') {
-        let particleClicked = activeElement.className.baseVal
+        let particleClicked = activeElement.className.baseVal;
         if(activeButton.id == particleClicked){
             // correct answer! yay!
             activeElement.classList.add('correct');

@@ -34,7 +34,7 @@ button {
     border-radius: 8px;
     border-width: 3px;
     border: 3px solid #0f678d;
-    transition: background-color 0.5s, color 0.5s;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 button:hover{
@@ -64,6 +64,54 @@ button.wrong {
 #buttons {
     display: grid;
     grid-template-columns: auto auto auto auto auto auto auto auto;
+    border-top: 3px dashed #222;
+    border-bottom: 3px dashed #222;
+    padding-top: 8px;
+    padding-bottom: 8px;
     width: 600px;
     gap: 10px;
+}
+
+#introtext {
+    width: 600px;
+}
+
+#introtext p {
+    font-family: Verdana;
+}
+
+#introtext a {
+    color: inherit;
+    text-decoration-thickness: 2px;
+    text-decoration-style: dotted;
+}
+
+#introtext .toLevel {
+    border: 2px solid #0f678d;
+    background-color: #0f678d;
+    padding: 6px;
+    font-size: 16px;
+    font-display: normal;
+    color: white;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#introtext .toLevel:hover {
+    background-color: white;
+    color: black;
+}
+
+.float-container {
+    padding: 20px;
+}
+
+.float-child {
+    width: 50%;
+    float: left;
+    padding: 20px;
+}
+
+#positronimage {
+    display: block;
+    margin-left: 44px;
 }
