@@ -4,7 +4,7 @@ from particledata import *
 from diagramtosvg import curve_func
 from pyscript import window
 
-c = 299792458
+c = 299.792458
 
 def expSample(l):
     """

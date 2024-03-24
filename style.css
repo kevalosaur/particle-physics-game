@@ -15,10 +15,10 @@ path:hover {
 }
 
 /* PARTICLE PATHS */
-.e-, .ep {
+.e_n, .e_p {
     stroke-width: 2px;
 }
-.mu- {
+.mu_n, .mu_p {
     stroke-width: 4px;
 }
 .y, .ve, .ve_bar, .vmu, .vmu_bar {
