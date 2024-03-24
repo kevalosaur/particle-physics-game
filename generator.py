@@ -115,7 +115,7 @@ class SpiralPath:
 
 class Trail:
     def __init__(self, particle, path):
-        self.label = particle.name
+        self.label = particle.ident
         self.path = path
     
     def __repr__(self):
