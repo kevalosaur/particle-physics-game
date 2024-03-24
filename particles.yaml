@@ -37,7 +37,7 @@ mu-:
     - weight: 1
       products:
         - e-
-        - vmu bar
+        - vmu_bar
         - ve
   description: >
     The (negative) muon, μ-, is a so-called "heavy electron", having the same charge as the electron but being over 200 times more massive.

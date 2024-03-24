@@ -1,6 +1,7 @@
 import math
 import random
-import particledata
+from particledata import *
+from diagramtosvg import curve_func
 from pyscript import window
 
 c = 299792458
@@ -121,12 +122,23 @@ class Trail:
     def __repr__(self):
         return f"Trail({self.label}, {self.path})"
 
-def propagate(particle, x, y, px, py, env):
+def decay_momentum(M, m1, m2):
+    return np.sqrt((M**2 - (m1+m2)**2)*(M**2-(m1-m2)**2)) / (2 * M)
+
+def random_angle():
+    theta = random.random() * 2 * math.pi
+    return math.cos(theta), math.sin(theta)
+
+def propagate(particle, x, y, px, py, env, force_decay = None):
     # TODO: Consider interactions! This code only models motion for now
     p = math.sqrt(px**2+py**2)
     if particle.decays:
-        decay_time = expSample(1/particle.meanlife)
-        decay_dist = decay_time * p / particle.mass * c
+        if force_decay:
+            decay_time = None
+            decay_dist = random.random()*100+50
+        else:
+            decay_time = expSample(1/particle.meanlife)
+            decay_dist = decay_time * p / particle.mass * c
         window.console.log(decay_time, decay_dist)
     if particle.mass == 0:
         # For now, the particle moves to the edge of the bounds
@@ -139,7 +151,17 @@ def propagate(particle, x, y, px, py, env):
         cx, cy = -dy*rg+x, dx*rg+y # Gyrocenter calculation
         curve_sign = 1 if rg > 0 else -1 # negative means CCW
         rg = abs(rg)
-        degs_moved = 3*math.pi # TODO: This should be calculated somehow
         td = (math.asin(dy) if dx>0 else math.pi - math.asin(dy))
         t0 = td - math.pi/2 * curve_sign
-        return [Trail(particle, SpiralPath(cx, cy, rg, curve_sign, t0, degs_moved, 0.1))]
+        other = []
+        a = 0.1
+        if particle.decays:
+            angle_moved = decay_dist/rg
+            xs, ys = curve_func(angle_moved, rg, a)*math.cos(curve_sign*angle_moved+t0)+cx, curve_func(angle_moved, rg, a)*math.sin(curve_sign*angle_moved+t0)+cy
+            for daughter in particle.decayPattern[0].products:
+                daughter = PARTICLES[daughter]
+                dx, dy = random_angle()
+                other += propagate(daughter, xs, ys, px + dx*10, py+dy*10, env)
+        else:
+            angle_moved = 30*math.pi # TODO: This should be calculated somehow
+        return other + [Trail(particle, SpiralPath(cx, cy, rg, curve_sign, t0, angle_moved, a))]

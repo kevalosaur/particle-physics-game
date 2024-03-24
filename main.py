@@ -7,7 +7,7 @@ window.console.log("test!")
 
 env = Env(-100, 100, -100, 100, 1)
 
-test_object = propagate(PARTICLES['mu-'], -50, 60, 30, 45, env) \
+test_object = propagate(PARTICLES['mu-'], -50, 60, 50, 45, env) \
             + propagate(PARTICLES['e-'], -50, 60, 15, 20, env)
 
 document.querySelector('#svghere').innerHTML = convert_diagram(test_object)
