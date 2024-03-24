@@ -183,3 +183,28 @@ button.wrong {
 .ve:hover, .ve_bar:hover, .vmu:hover, .vmu_bar:hover {
     stroke: #aaa
 }
+
+.loader {
+    margin: 140px 240px;
+    border: 16px solid #aaa;
+    border-top: 16px solid #0f678d;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin 1.4s ease-in-out infinite;
+}
+
+.loader-small {
+    margin: 40px 260px;
+    border: 8px solid #aaa;
+    border-top: 8px solid #0f678d;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1.4s ease-in-out infinite;
+}
+  
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
