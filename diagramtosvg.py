@@ -2,8 +2,8 @@ import math
 import numpy as np
 from pyscript import document
 
-SVG_HEIGHT = 400
-SVG_WIDTH = 600
+SVG_HEIGHT = 700
+SVG_WIDTH = 1000
 
 def polar_to_cartesian(cx, cy, radius, angle_radians):
     return cx + (radius * np.cos(angle_radians)), cy + (radius * np.sin(angle_radians))
