@@ -9,26 +9,28 @@ document.addEventListener('mousedown', function(event) {
     }
     else if(activeElement.nodeName == 'path') {
         let particleClicked = activeElement.className.baseVal;
-        if(activeButton.id == particleClicked){
-            // correct answer! yay!
-            activeElement.classList.add('correct');
-
-            // check if all correct
-            canvas = document.getElementById('canvas');
-            let allCorrect = true
-            canvas.childNodes.forEach((node) => {
-                allCorrect &&= node.classList.contains('correct');
-            });
-            if(allCorrect) {
-                alert('all correct');
+        if(activeButton) {
+            if(activeButton.id == particleClicked) {
+                // correct answer! yay!
+                activeElement.classList.add('correct');
+    
+                // check if all correct
+                canvas = document.getElementById('canvas');
+                let allCorrect = true
+                canvas.childNodes.forEach((node) => {
+                    allCorrect &&= node.classList.contains('correct');
+                });
+                if(allCorrect) {
+                    alert('all correct');
+                }
             }
-        }
-        else {
-            // wrong answer! boo!
-            activeButton.classList.add('wrong');
-            setTimeout(() => {
-                activeButton.classList.remove('wrong');
-            }, 820);
-        }
+            else {
+                // wrong answer! boo!
+                activeButton.classList.add('wrong');
+                setTimeout(() => {
+                    activeButton.classList.remove('wrong');
+                }, 820);
+            }
+        }  
     }
 });

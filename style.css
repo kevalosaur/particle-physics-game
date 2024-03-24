@@ -14,8 +14,26 @@ path:hover {
     box-shadow: 2px 2px 5px black;
 }
 
+/* PARTICLE PATHS */
+.e-, .ep {
+    stroke-width: 2px;
+}
+.mu- {
+    stroke-width: 4px;
+}
+.ve, .ve_bar, .vmu, .vmu_bar {
+    stroke-width: 4px;
+    opacity: 0%;
+    stroke: #aaa;
+    transition: opacity 0.4s;
+}
+.ve:hover, .ve_bar:hover, .vmu:hover, .vmu_bar:hover {
+    opacity: 100%;
+}
+
 path.correct {
     stroke: yellowgreen;
+    opacity: 100%;
 }
 
 path:active {
@@ -168,23 +186,6 @@ button.wrong {
     font-size: 12px;
 }
 
-/* PARTICLE PATHS */
-.e-, .ep {
-    stroke-width: 2px;
-}
-.mu- {
-    stroke-width: 4px;
-}
-.ve, .ve_bar, .vmu, .vmu_bar {
-    stroke-width: 4px;
-    opacity: 0%;
-    stroke: #aaa;
-    transition: opacity 0.4s;
-}
-.ve:hover, .ve_bar:hover, .vmu:hover, .vmu_bar:hover {
-    opacity: 100%;
-}
-
 .loader {
     margin: 140px 240px;
     border: 16px solid #aaa;
@@ -208,4 +209,8 @@ button.wrong {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+sub {
+    pointer-events: none;
 }
