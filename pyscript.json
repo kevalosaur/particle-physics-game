@@ -1,5 +1,5 @@
 {
-    "packages": [],
+    "packages": ["numpy"],
     "files": {
         "./particledata.py": "./particledata.py",
         "./generator.py": "./generator.py",

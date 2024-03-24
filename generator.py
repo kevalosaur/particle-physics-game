@@ -42,7 +42,7 @@ def lineBounds(x, y, vx, vy, env):
     :param vx: The x-velocity of the particle
     :param vy: The y-velocity of the particle
     :param env: The environment the particle is moving in
-    :return: An array consisting of the (x, y) position of the point of intersection
+    :return: A tuple consisting of the (x, y) position of the point of intersection
     """
     xint, yint = None, None
     if (vx < 0):
@@ -56,6 +56,20 @@ def lineBounds(x, y, vx, vy, env):
     t = min(xint, yint)
     return x + t*vx, y+t*vy
 
+def circleBounds(x, y, r, env):
+    """
+    Computes the point at which a circular path exits the bounding circle of the environment
+
+    :param x: The x-position of the center
+    :param y: The y-position of the center
+    :param r: The radius of the circle
+    :param env: The environment the particle is moving in
+    :return: A tuple containing the two theta-values at which the circles intersect. If they do not, returns None
+    """
+    pass
+
+
+
 class LinePath:
     def __init__(self, x1, y1, x2, y2):
         self.mode = "line"
@@ -68,16 +82,32 @@ class LinePath:
         return f"LinePath({self.x1}, {self.y1}, {self.x2}, {self.y2})"
 
 class CirclePath:
-    def __init__(self, x, y, r, t1, t2):
+    def __init__(self, x1, y1, x2, y2, r, isCCW, isOverPi):
         self.mode = "circle"
-        self.x=x
-        self.y=y
+        self.x1=x1
+        self.y1=y1
+        self.x2=x2
+        self.y2=y2
         self.r=r
-        self.t1=t1
-        self.t2=t2
+        self.isCCW = isCCW
+        self.isOverPi = isOverPi
     
     def __repr__(self):
-        return f"CirclePath({self.x}, {self.y}, {self.r}, {self.t1}, {self.t2})"
+        return f"CirclePath({self.x1}, {self.y1}, {self.x2}, {self.y2}, {self.r}, {self.isCCW}, {self.isOverPi})"
+
+class SpiralPath:
+    def __init__(self, x, y, r, curve_sign, t0, t, a):
+        self.mode = "spiral"
+        self.x = x
+        self.y = y
+        self.r = r
+        self.curve_sign = curve_sign
+        self.t0 = t0
+        self.t = t
+        self.a = a
+    
+    def __repr__(self):
+        return f"SpiralPath({self.x}, {self.y}, {self.r}, {self.curve_sign}, {self.t0}, {self.t}, {self.a})"
 
 class Trail:
     def __init__(self, particle, path):
@@ -97,7 +127,11 @@ def propagate(particle, x, y, px, py, env):
         p = math.sqrt(px**2+py**2)
         dx, dy = px/p, py/p # Unit vector direction of travel
         rg = p / (particle.charge * env.b) # Gyroradius calculation
-        # Positive indicates clockwise, negative indicates counterlockwise
-        # TODO: Check direction of circle with respect to magnetic field
+        # Sign is correct if positive B means out of page
         cx, cy = -dy*rg+x, dx*rg+y # Gyrocenter calculation
-        return [Trail(particle, CirclePath(cx, cy, rg, 0, 2*math.pi))]
+        curve_sign = 1 if rg > 0 else -1 # negative means CCW
+        rg = abs(rg)
+        degs_moved = 3*math.pi # TODO: This should be calculated somehow
+        td = (math.asin(dy) if dx>0 else math.pi - math.asin(dy))
+        t0 = td - math.pi/2 * curve_sign
+        return [Trail(particle, SpiralPath(cx, cy, rg, curve_sign, t0, degs_moved, 0.1))]

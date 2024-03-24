@@ -1,6 +1,9 @@
 from particledata import *
 from generator import *
 
-env = Env(-100, 100, -100, 100, 100)
+env = Env(-100, 100, -100, 100, 1)
 
-print(propagate(PHOTON, -50, 60, 100, 20, env) + propagate(POSITRON, -50, 60, 100, 30, env) + propagate(ELECTRON, -50, 60, 90, 40, env))
+test_object = propagate(ELECTRON, -50, 60, 30, 45, env) \
+            + propagate(POSITRON, -50, 60, 15, 20, env)
+
+print(test_object)
