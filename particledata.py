@@ -19,16 +19,16 @@ class ParticleType:
         self.mass = mass
         self.charge = charge
         self.decays = decays
-        self.meanlife = halflife
+        self.meanlife = meanlife
         self.decayPattern = decayPattern
         self.description = description
     
     def desc_text(self):
-        return self.description + f"\n\nCharge:{charge} e\nMass:{self.mass}"
+        return self.description + f"\n\nCharge:{self.charge} e\nMass:{self.mass}"
 
 
 class DecayMode:
-    def __init__(self, products, weight):
+    def __init__(self, products, weight=1):
         self.products = products
         self.weight = weight
 
@@ -39,7 +39,7 @@ POSITRON = ParticleType("e+", "e+", 0.511, +1, False, None, [],
 "The positron, e+, is the antimatter counterpart of the electron, with equal mass but inverted charge. A positron will leave an electron-like trail, but curving in the opposite direction.")
 PHOTON = ParticleType("y", "γ", 0, 0, False, None, [],
 "The photon, γ, is the carrier of the electromagnetic force and a particle of light. Depending on energy and source they can be referred to as gamma rays or X-rays. Photons are neutral and thus leave no trail in the bubble chamber.")
-MUON = ParticleType("mu", "mu", 105.658, -1, True, 10, [],
+MUON = ParticleType("mu", "mu", 105.658, -1, True, 2.197e-6, [DecayMode(["e-", "ve bar", "vmu"])],
 "The muon, mu, is a so-called \"heavy electron\", having the same charge as the electron but being over 200 times more massive. They are unstable and decay into electrons. They leave thick trails in the detector.")
 
 PARTICLES = [ELECTRON, POSITRON, PHOTON]
