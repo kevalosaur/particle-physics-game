@@ -46,7 +46,7 @@ mu+:
   name: positive muon
   symbol: μ+
   mass: 105.658
-  charge: -1
+  charge: +1
   decays: true
   meanlife: 2.197e-6
   decaymodes:
