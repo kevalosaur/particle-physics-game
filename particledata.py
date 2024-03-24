@@ -24,7 +24,7 @@ class ParticleType:
         self.description = description
     
     def desc_text(self):
-        return self.description + f"\n\nCharge:{self.charge} e\nMass:{self.mass} MeV"
+        return self.description + f"<em><br>Charge: {self.charge} e<br>Mass: {self.mass} MeV</em>"
 
 
 class DecayMode:
@@ -35,7 +35,7 @@ class DecayMode:
 
 ELECTRON = ParticleType("e-", "e-", 0.511, -1, False, None, [],
 "The electron, e-, is a component of ordinary matter, found orbiting atomic nuclei. A high-energy electron is called a beta ray. Electrons leave thin trails in the detector.")
-POSITRON = ParticleType("e+", "e+", 0.511, +1, False, None, [],
+POSITRON = ParticleType("ep", "e+", 0.511, +1, False, None, [],
 "The positron, e+, is the antimatter counterpart of the electron, with equal mass but inverted charge. A positron will leave an electron-like trail, but curving in the opposite direction.")
 PHOTON = ParticleType("y", "γ", 0, 0, False, None, [],
 "The photon, γ, is the carrier of the electromagnetic force and a particle of light. Depending on energy and source they can be referred to as gamma rays or X-rays. Photons are neutral and thus leave no trail in the bubble chamber.")
