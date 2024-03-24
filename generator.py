@@ -100,4 +100,4 @@ def propagate(particle, x, y, px, py, env):
         # Positive indicates clockwise, negative indicates counterlockwise
         # TODO: Check direction of circle with respect to magnetic field
         cx, cy = -dy*rg+x, dx*rg+y # Gyrocenter calculation
-        return [Trail(particle, CirclePath(cx, cy, rg, 0, 2*math.pi))]
+        return [Trail(particle, CirclePath(cx, cy, rg, 0, 1.999*math.pi))]

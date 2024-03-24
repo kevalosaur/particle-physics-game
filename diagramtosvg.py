@@ -47,7 +47,7 @@ def convert_diagram(diagram):
             particle_bucket[id] = 0
         id += str(particle_bucket[id])
 
-        out += f"<path class=\"{p.label}\" id=\"{id}\" d=\"{d}\" onclick=\"check(\'{p.label}\')\"/>"
+        out += f"<path class=\"{p.label}\" id=\"{id}\" d=\"{d}\" />"
 
     out += "</svg>"
     return out

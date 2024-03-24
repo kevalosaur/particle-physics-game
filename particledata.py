@@ -3,7 +3,7 @@ class ParticleType:
     Represents a type of particle.
     """
 
-    def __init__(self, name, mass, charge, decays, halflife, decayPattern):
+    def __init__(self, name, symbol, mass, charge, decays, halflife, decayPattern):
         """
         Constructs an object representing a type of particle.
         
@@ -15,6 +15,7 @@ class ParticleType:
         :param decayPattern: List of possible decay modes, with weights.
         """
         self.name = name
+        self.symbol = symbol
         self.mass = mass
         self.charge = charge
         self.decays = decays
@@ -28,6 +29,8 @@ class DecayMode:
         self.weight = weight
 
 
-ELECTRON = ParticleType("e-", 1, -1, False, None, [])
-POSITRON = ParticleType("e+", 1, +1, False, None, [])
-PHOTON = ParticleType("y", 0, 0, False, None, [])
+ELECTRON = ParticleType("e-", "e-", 1, -1, False, None, [])
+POSITRON = ParticleType("e+", "e+", 1, +1, False, None, [])
+PHOTON = ParticleType("y", "γ", 0, 0, False, None, [])
+
+PARTICLES = [ELECTRON, POSITRON, PHOTON]
