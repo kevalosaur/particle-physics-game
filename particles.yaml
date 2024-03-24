@@ -7,9 +7,9 @@ e-:
   description: >
     The electron, e-, is a component of ordinary matter, found orbiting atomic nuclei.
     A high-energy electron is called a beta ray. Electrons leave thin trails in the detector.
-e+:
+ep:
   name: positron
-  symbol: ep
+  symbol: e+
   mass: 0.511
   charge: 1
   decays: false
