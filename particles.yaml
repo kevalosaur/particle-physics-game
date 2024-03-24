@@ -40,5 +40,61 @@ mu-:
         - vmu bar
         - ve
   description: >
-    The muon, μ-, is a so-called "heavy electron", having the same charge as the electron but being over 200 times more massive.
+    The (negative) muon, μ-, is a so-called "heavy electron", having the same charge as the electron but being over 200 times more massive.
     They are unstable and decay into electrons and neutrinos. They leave thick trails in the detector.
+mu+:
+  name: positive muon
+  symbol: μ+
+  mass: 105.658
+  charge: -1
+  decays: true
+  meanlife: 2.197e-6
+  decaymodes:
+    - weight: 1
+      products:
+        - ep
+        - vmu
+        - ve-
+  description: >
+    The antimuon or positive muon is the antimatter counterpart of the muon, having opposite charge to the electron and also being more massive.
+    Like the negative muon leave thick trails in the detector.
+ve:
+  name: electron neutrino
+  symbol: v
+  mass: 0
+  charge: 0
+  decays: false
+  description: >
+    Neutrinos are ghostly particles that pass directly through solid matter.
+    The electron neutrino is produced when an electron is absorbed or a positron is produced.
+    Neutrinos do not leave trails in the detector. Their presence can be inferred from momentum they carry away.
+ve_bar:
+  name: electron antineutrino
+  symbol: v
+  mass: 0
+  charge: 0
+  decays: false
+  description: >
+    Neutrinos are ghostly particles that pass directly through solid matter.
+    The electron antineutrino is produced when an electron is produced.
+    Neutrinos do not leave trails in the detector. Their presence can be inferred from momentum they carry away.
+vmu:
+  name: muon neutrino
+  symbol: v
+  mass: 0
+  charge: 0
+  decays: false
+  description: >
+    Neutrinos are ghostly particles that pass directly through solid matter.
+    The muon antineutrino is produced when a positive muon decays.
+    Neutrinos do not leave trails in the detector. Their presence can be inferred from momentum they carry away.
+vmu_bar:
+  name: muon antineutrino
+  symbol: v
+  mass: 0
+  charge: 0
+  decays: false
+  description: >
+    Neutrinos are ghostly particles that pass directly through solid matter.
+    The muon antineutrino is produced when a negative muon decays.
+    Neutrinos do not leave trails in the detector. Their presence can be inferred from momentum they carry away.
