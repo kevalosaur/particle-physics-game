@@ -1,4 +1,4 @@
-e-:
+e_n:
   name: electron
   symbol: e-
   mass: 0.511
@@ -7,7 +7,7 @@ e-:
   description: >
     The electron, e-, is a component of ordinary matter, found orbiting atomic nuclei.
     A high-energy electron is called a beta ray. Electrons leave thin trails in the detector.
-ep:
+e_p:
   name: positron
   symbol: e+
   mass: 0.511
@@ -26,23 +26,23 @@ y:
     The photon, γ, is the carrier of the electromagnetic force and a particle of light.
     Depending on energy and source they can be referred to as gamma rays or X-rays.
     Photons are neutral and thus leave no trail in the bubble chamber.
-mu-:
+mu_n:
   name: muon
   symbol: μ-
   mass: 105.658
   charge: -1
   decays: true
-  meanlife: 2.197e-6
+  meanlife: 2.197
   decaymodes:
     - weight: 1
       products:
-        - e-
+        - e_n
         - vmu
         - ve_bar
   description: >
     The (negative) muon, μ-, is a so-called "heavy electron", having the same charge as the electron but being over 200 times more massive.
     They are unstable and decay into electrons and neutrinos. They leave thick trails in the detector.
-mu+:
+mu_p:
   name: positive muon
   symbol: μ+
   mass: 105.658
@@ -52,7 +52,7 @@ mu+:
   decaymodes:
     - weight: 1
       products:
-        - ep
+        - e_p
         - vmu_bar
         - ve
   description: >
@@ -98,3 +98,33 @@ vmu_bar:
     Neutrinos are ghostly particles that pass directly through solid matter.
     The muon antineutrino is produced when a negative muon decays.
     Neutrinos do not leave trails in the detector. Their presence can be inferred from momentum they carry away.
+pi_p:
+  name: positive pion
+  symbol: π+
+  mass: 139.57
+  charge: +1
+  decays: true
+  meanlife:
+  decaymodes:
+    - weight: 1
+      products:
+        - mu_p
+        - vmu
+  description: >
+    The positive pion is a combination of one down quark and one up antiquark. It decays into a positive muon and muon neutrino.
+    It leaves a thick trail, like muons, and was mistaken for muons in the early years of its discovery.
+pi_n:
+  name: negative pion
+  symbol: π-
+  mass: 139.57
+  charge: -1
+  decays: true
+  meanlife: 2.6033e-2
+  decaymodes:
+    - weight: 1
+      products:
+        - mu_n
+        - vmu_bar
+  description: >
+    The positive pion is a combination of one up quark and one down antiquark. It decays into a negative muon and muon antineutrino.
+    It leaves a thick trail, like muons, and was mistaken for muons in the early years of its discovery.
