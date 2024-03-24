@@ -60,7 +60,7 @@ mu+:
     Like the negative muon leave thick trails in the detector.
 ve:
   name: electron neutrino
-  symbol: v
+  symbol: ν<sub>e</sub>
   mass: 0
   charge: 0
   decays: false
@@ -70,7 +70,7 @@ ve:
     Neutrinos do not leave trails in the detector. Their presence can be inferred from momentum they carry away.
 ve_bar:
   name: electron antineutrino
-  symbol: v
+  symbol: ν<sub>e</sub>
   mass: 0
   charge: 0
   decays: false
@@ -80,7 +80,7 @@ ve_bar:
     Neutrinos do not leave trails in the detector. Their presence can be inferred from momentum they carry away.
 vmu:
   name: muon neutrino
-  symbol: v
+  symbol: ν<sub>μ</sub>
   mass: 0
   charge: 0
   decays: false
@@ -90,7 +90,7 @@ vmu:
     Neutrinos do not leave trails in the detector. Their presence can be inferred from momentum they carry away.
 vmu_bar:
   name: muon antineutrino
-  symbol: v
+  symbol: ν<sub>μ</sub>
   mass: 0
   charge: 0
   decays: false
