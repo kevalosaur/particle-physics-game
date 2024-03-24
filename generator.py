@@ -56,17 +56,17 @@ def lineBounds(x, y, vx, vy, env):
     t = min(xint, yint)
     return x + t*vx, y+t*vy
 
-def circleBounds(x, y, r, env):
-    """
-    Computes the point at which a circular path exits the bounding circle of the environment
+# def circleBounds(x, y, r, env):
+#     """
+#     Computes the point at which a circular path exits the bounding circle of the environment
 
-    :param x: The x-position of the center
-    :param y: The y-position of the center
-    :param r: The radius of the circle
-    :param env: The environment the particle is moving in
-    :return: A tuple containing the two theta-values at which the circles intersect. If they do not, returns None
-    """
-    pass
+#     :param x: The x-position of the center
+#     :param y: The y-position of the center
+#     :param r: The radius of the circle
+#     :param env: The environment the particle is moving in
+#     :return: A tuple containing the two theta-values at which the circles intersect. If they do not, returns None
+#     """
+#     pass
 
 
 
@@ -81,19 +81,19 @@ class LinePath:
     def __repr__(self):
         return f"LinePath({self.x1}, {self.y1}, {self.x2}, {self.y2})"
 
-class CirclePath:
-    def __init__(self, x1, y1, x2, y2, r, isCCW, isOverPi):
-        self.mode = "circle"
-        self.x1=x1
-        self.y1=y1
-        self.x2=x2
-        self.y2=y2
-        self.r=r
-        self.isCCW = isCCW
-        self.isOverPi = isOverPi
+# class CirclePath:
+#     def __init__(self, x1, y1, x2, y2, r, isCCW, isOverPi):
+#         self.mode = "circle"
+#         self.x1=x1
+#         self.y1=y1
+#         self.x2=x2
+#         self.y2=y2
+#         self.r=r
+#         self.isCCW = isCCW
+#         self.isOverPi = isOverPi
     
-    def __repr__(self):
-        return f"CirclePath({self.x1}, {self.y1}, {self.x2}, {self.y2}, {self.r}, {self.isCCW}, {self.isOverPi})"
+#     def __repr__(self):
+#         return f"CirclePath({self.x1}, {self.y1}, {self.x2}, {self.y2}, {self.r}, {self.isCCW}, {self.isOverPi})"
 
 class SpiralPath:
     def __init__(self, x, y, r, curve_sign, t0, t, a):

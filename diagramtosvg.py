@@ -34,17 +34,17 @@ def convert_diagram(diagram):
                 "M", str(x1w), str(y1w),
                 "L", str(x2w), str(y2w),
             ])
-        elif path.mode == 'circle':
-            x1, y1, x2, y2, r = path.x1, path.y1, path.x2, path.y2, path.r
-            isReflexArc = '1' if t2-t1 >= np.pi else '0'
-            isCounterclockwise = '1' if r < 0 else '0'
-            r = abs(r)
-            x1, y1 = polar_to_web(x, y, r, t1, SVG_HEIGHT, SVG_WIDTH)
-            x2, y2 = polar_to_web(x, y, r, t2, SVG_HEIGHT, SVG_WIDTH)
-            d = " ".join([
-                "M", str(x1), str(y1),
-                "A", str(r), str(r), '0', isReflexArc, isCounterclockwise, str(x2), str(y2),
-            ])
+        # elif path.mode == 'circle':
+        #     x1, y1, x2, y2, r = path.x1, path.y1, path.x2, path.y2, path.r
+        #     isReflexArc = '1' if t2-t1 >= np.pi else '0'
+        #     isCounterclockwise = '1' if r < 0 else '0'
+        #     r = abs(r)
+        #     x1, y1 = polar_to_web(x, y, r, t1, SVG_HEIGHT, SVG_WIDTH)
+        #     x2, y2 = polar_to_web(x, y, r, t2, SVG_HEIGHT, SVG_WIDTH)
+        #     d = " ".join([
+        #         "M", str(x1), str(y1),
+        #         "A", str(r), str(r), '0', isReflexArc, isCounterclockwise, str(x2), str(y2),
+        #     ])
         elif path.mode == 'spiral':
             x, y, r, s, t0, T, a = path.x, path.y, path.r, path.curve_sign, path.t0, path.t, path.a
             samples = math.ceil(T*30)
